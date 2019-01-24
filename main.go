@@ -7,7 +7,12 @@ import (
 
 func handlerFunc(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "text/html")
-	fmt.Fprint(w, "<h1>Welcome to LocktheFrame</h1>")
+
+	if r.URL.Path == "/" {
+		fmt.Fprint(w, "<h1>Welcome to LocktheFrame</h1>")
+	} else if r.URL.Path == "/contact" {
+		fmt.Fprint(w, "Please get in touch with us @ <a href=\"mailto:support@locktheframe.com\">support@locktheframe.com</a>")
+	}
 }
 
 func main() {
